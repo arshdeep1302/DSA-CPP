@@ -1,0 +1,31 @@
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+using namespace std;
+
+vector<int> twosum(vector<int>& arr, int target) {
+    unordered_map<int, int> m;
+
+    for (int i = 0; i < arr.size(); i++) {
+        int first = arr[i];
+        int second = target - first;
+
+        if (m.find(second) != m.end()) {
+            return {m[second], i};   
+        }
+
+        m[first] = i;   
+    }
+
+    return {-1, -1};   
+}
+
+int main() {
+    vector<int> arr = {5, 2, 11, 7, 15};
+    int target = 16;
+
+    vector<int> result = twosum(arr, target);
+    cout << result[0] << " " << result[1];
+
+    return 0;
+}
