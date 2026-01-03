@@ -4,6 +4,7 @@ This folder contains array-related Data Structures and Algorithms problems solve
 
  📘 Problems Covered
 1. Reverse an Array
+2. Two Sum
 
  🧠 Concepts Used
 - Index manipulation
