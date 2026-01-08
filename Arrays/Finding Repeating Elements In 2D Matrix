@@ -1,0 +1,51 @@
+#include <iostream>
+#include <vector>
+#include <unordered_set>
+
+using namespace std;
+
+/*
+  Finds all repeating elements in a 2D grid.
+  Time Complexity: O(n^2)
+  Space Complexity: O(n^2)
+*/
+vector<int> findAllDuplicates(const vector<vector<int>>& grid) {
+    int n = grid.size();
+
+    unordered_set<int> seen;       // stores unique elements
+    unordered_set<int> duplicates; // stores repeating elements
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < grid[i].size(); j++) {
+            int val = grid[i][j];
+
+            if (seen.find(val) != seen.end()) {
+                duplicates.insert(val);  // found duplicate
+            } else {
+                seen.insert(val);        // first time seen
+            }
+        }
+    }
+
+    // Convert set to vector for output
+    return vector<int>(duplicates.begin(), duplicates.end());
+}
+
+int main() {
+    vector<vector<int>> grid = {
+        {1, 2, 3},
+        {4, 9, 6},
+        {7, 8, 9},
+        {4, 3, 2}
+    };
+
+    vector<int> result = findAllDuplicates(grid);
+
+    cout << "Repeating elements: ";
+    for (int x : result) {
+        cout << x << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
