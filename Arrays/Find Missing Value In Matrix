@@ -1,0 +1,62 @@
+#include <iostream>
+#include <vector>
+#include <unordered_set>
+
+using namespace std;
+
+/*
+  Finds the missing and repeating number in an n x n grid.
+  Assumption:
+  - Numbers are from 1 to n^2
+  - Exactly one number is missing
+  - Exactly one number is repeating
+
+  Time Complexity: O(n^2)
+  Space Complexity: O(n^2)
+*/
+vector<int> findMissingAndRepeating(const vector<vector<int>>& grid) {
+    int n = grid.size();
+
+    unordered_set<int> seen;
+    int actualSum = 0;
+    int repeating = -1;
+
+    // Traverse the grid
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            int val = grid[i][j];
+            actualSum += val;
+
+            // Detect repeating element
+            if (seen.find(val) != seen.end()) {
+                repeating = val;
+            } else {
+                seen.insert(val);
+            }
+        }
+    }
+
+    // Expected sum of numbers from 1 to n^2
+    int total = n * n;
+    int expectedSum = total * (total + 1) / 2;
+
+    // Missing number calculation
+    int missing = expectedSum + repeating - actualSum;
+
+    return {missing, repeating};
+}
+
+int main() {
+    vector<vector<int>> grid = {
+        {1, 2, 3},
+        {4, 9, 6},
+        {7, 8, 9}
+    };
+
+    vector<int> result = findMissingAndRepeating(grid);
+
+    cout << "Missing: " << result[0] << endl;
+    cout << "Repeating: " << result[1] << endl;
+
+    return 0;
+}
