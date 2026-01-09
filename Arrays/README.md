@@ -5,7 +5,8 @@ This folder contains array-related Data Structures and Algorithms problems solve
  📘 Problems Covered
 1. Reverse an Array
 2. Two Sum
-3. Finding Repeating Elements In 2-D Matrix
+3. Finding Repeating Elements In Matrix
+4. Find Missing Value In Matrix
 
  🧠 Concepts Used
 - Index manipulation
