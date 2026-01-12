@@ -1,0 +1,75 @@
+#include <iostream>
+using namespace std;
+
+/*
+    Function: threeSum
+    Purpose : Find all unique triplets in the array whose sum is 0
+    Input   : Vector of integers (nums)
+    Output  : Vector of unique triplets
+*/
+vector<vector<int>> threeSum(vector<int>& nums) {
+
+    int n = nums.size();
+
+    // This set is used to store only UNIQUE triplets
+    // It automatically removes duplicate triplets
+    set<vector<int>> uniqueTriplets;
+
+    // This vector stores the final answer
+    vector<vector<int>> ans;
+
+    // Fix the first element of the triplet
+    for(int i = 0; i < n; i++) {
+
+        // Set to store numbers seen so far for 2-sum
+        // This is reset for every new i
+        set<int> s;
+
+        // We want nums[j] + nums[k] = -nums[i]
+        int target = -nums[i];
+
+        // Find pairs starting from index i+1
+        for(int j = i + 1; j < n; j++) {
+
+            // Number needed to complete the triplet
+            int k = target - nums[j];
+
+            // If k is already seen, a valid triplet is found
+            if(s.find(k) != s.end()) {
+
+                // Create the triplet
+                vector<int> trip = {nums[i], nums[j], k};
+
+                // Sort the triplet to handle duplicates
+                sort(trip.begin(), trip.end());
+
+                // Insert into set
+                // insert().second is true only if triplet is new
+                if(uniqueTriplets.insert(trip).second) {
+                    ans.push_back(trip);
+                }
+            }
+
+            // Store current number for future pair checking
+            s.insert(nums[j]);
+        }
+    }
+
+    return ans;
+}
+
+int main() {
+
+    // Sample input
+    vector<int> nums = {-1, 0, 1, 2, -1, -4};
+
+    // Function call
+    auto res = threeSum(nums);
+
+    // Print result
+    for(auto &t : res) {
+        cout << "[ ";
+        for(int x : t) cout << x << " ";
+        cout << "]\n";
+    }
+}
