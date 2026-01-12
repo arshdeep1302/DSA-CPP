@@ -10,6 +10,7 @@ This folder contains array-related Data Structures and Algorithms problems solve
 5. Three_Sum In Array
 6. Three_Sum In Array (2 pointer)
 7. Four_Sum In Array
+8. Subarray Sum Equals K
 
  🧠 Concepts Used
 - Index manipulation
