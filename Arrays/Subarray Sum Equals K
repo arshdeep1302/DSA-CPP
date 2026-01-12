@@ -1,0 +1,47 @@
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+using namespace std;
+
+/*
+    Problem: Subarray Sum Equals K
+
+    Approach:
+    - Use Prefix Sum
+    - Use Hash Map to store frequency of prefix sums
+
+    Time Complexity: O(n)
+    Space Complexity: O(n)
+*/
+
+int subarraySum(vector<int>& nums, int target) {
+    unordered_map<int, int> prefixCount;
+
+    // Base case: prefix sum 0 occurs once
+    prefixCount[0] = 1;
+
+    int sum = 0;
+    int count = 0;
+
+    for(int i = 0; i < nums.size(); i++) {
+        sum += nums[i];   // update prefix sum
+
+        // Check if a subarray ending here has sum = target
+        if(prefixCount.find(sum - target) != prefixCount.end()) {
+            count += prefixCount[sum - target];
+        }
+
+        // Store current prefix sum
+        prefixCount[sum]++;
+    }
+
+    return count;
+}
+
+int main() {
+    vector<int> nums = {-1, 0, 1, 2, -1, -4};
+    int target = 2;
+
+    cout << subarraySum(nums, target);
+    return 0;
+}
