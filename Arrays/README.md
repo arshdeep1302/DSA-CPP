@@ -8,6 +8,7 @@ This folder contains array-related Data Structures and Algorithms problems solve
 3. Finding Repeating Elements In Matrix
 4. Find Missing Value In Matrix
 5. Three_Sum In Array
+6. Three_Sum In Array (2 pointer)
 
  🧠 Concepts Used
 - Index manipulation
