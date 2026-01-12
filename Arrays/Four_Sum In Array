@@ -1,0 +1,77 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+/*
+    Problem: 4Sum
+    -------------------------
+    Find all unique quadruplets
+    such that their sum is 0.
+
+    Approach:
+    - Sort the array
+    - Fix first two elements
+    - Use two pointers for the remaining two
+
+    Time Complexity: O(n^3)
+    Space Complexity: O(1) (excluding output)
+*/
+
+vector<vector<int>> fourSum(vector<int>& nums) {
+    vector<vector<int>> ans;
+    int n = nums.size();
+
+    // Step 1: Sort the array
+    sort(nums.begin(), nums.end());
+
+    // Step 2: Fix first number
+    for(int i = 0; i < n; i++) {
+        if(i > 0 && nums[i] == nums[i-1]) continue;
+
+        // Step 3: Fix second number
+        for(int j = i + 1; j < n; j++) {
+            if(j > i + 1 && nums[j] == nums[j-1]) continue;
+
+            int l = j + 1;
+            int r = n - 1;
+
+            // Step 4: Two-pointer search
+            while(l < r) {
+                long long sum =
+                    (long long)nums[i] +
+                    nums[j] +
+                    nums[l] +
+                    nums[r];
+
+                if(sum < 0) {
+                    l++;
+                }
+                else if(sum > 0) {
+                    r--;
+                }
+                else {
+                    ans.push_back({nums[i], nums[j], nums[l], nums[r]});
+                    l++;
+                    r--;
+
+                    // Skip duplicates
+                    while(l < r && nums[l] == nums[l-1]) l++;
+                    while(l < r && nums[r] == nums[r+1]) r--;
+                }
+            }
+        }
+    }
+    return ans;
+}
+
+int main() {
+    vector<int> nums = {-1, 0, 1, 2, -1, -4};
+    auto res = fourSum(nums);
+
+    for(auto &q : res) {
+        cout << "[ ";
+        for(int x : q) cout << x << " ";
+        cout << "]\n";
+    }
+}
