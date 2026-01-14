@@ -4,9 +4,10 @@ This folder contains recursion-based Data Structures and Algorithms problems sol
 
 📘 Problems Covered
 
-1.Factorial 
-1.Fabonacci
-1.Check Array Is Sorted
+1. Factorial
+1. Fibonacci
+1. Check Array Is Sorted
+
 
 🧠 Concepts Used
 
