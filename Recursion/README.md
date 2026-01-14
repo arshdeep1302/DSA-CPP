@@ -6,6 +6,7 @@ This folder contains recursion-based Data Structures and Algorithms problems sol
 
 1.Factorial 
 2.Fabonacci
+3.Check Array Is Sorted
 
 🧠 Concepts Used
 
