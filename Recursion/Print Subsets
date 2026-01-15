@@ -1,0 +1,39 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+/*
+  Function: printSubsets
+  Purpose : Prints all subsets of the given array using recursion
+  Params  :
+    - index : current position in array
+    - arr   : input array
+    - curr  : current subset being built
+*/
+void printSubsets(int index, const vector<int>& arr, vector<int>& curr) {
+    // Base case: all elements processed
+    if (index == arr.size()) {
+        cout << "{ ";
+        for (int x : curr) cout << x << " ";
+        cout << "}\n";
+        return;
+    }
+
+    // Case 1: Exclude current element
+    printSubsets(index + 1, arr, curr);
+
+    // Case 2: Include current element
+    curr.push_back(arr[index]);
+    printSubsets(index + 1, arr, curr);
+
+    // Backtrack
+    curr.pop_back();
+}
+
+int main() {
+    vector<int> arr = {1, 2};
+    vector<int> curr;
+
+    printSubsets(0, arr, curr);
+    return 0;
+}
