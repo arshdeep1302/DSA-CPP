@@ -10,6 +10,7 @@ This folder contains recursion-based Data Structures and Algorithms problems sol
 2. Binary Search Using Recursion
 3. Print Subsets
 4. Print Subsets (Power Set)
+5. Permutation
 
 
 🧠 Concepts Used
