@@ -1,0 +1,34 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+// Function to generate permutations using backtracking
+void getPermutations(vector<int>& arr, int idx, vector<vector<int>>& ans) {
+    // Base case: permutation completed
+    if (idx == arr.size()) {
+        ans.push_back(arr);
+        return;
+    }
+
+    // Try every element at position idx
+    for (int i = idx; i < arr.size(); i++) {
+        swap(arr[idx], arr[i]);          // choose
+        getPermutations(arr, idx + 1, ans); // explore
+        swap(arr[idx], arr[i]);          // undo (backtrack)
+    }
+}
+
+int main() {
+    vector<int> arr = {1, 2, 3};
+    vector<vector<int>> ans;
+
+    getPermutations(arr, 0, ans);
+
+    // Print permutations
+    for (auto &perm : ans) {
+        for (int x : perm) cout << x << " ";
+        cout << endl;
+    }
+
+    return 0;
+}
