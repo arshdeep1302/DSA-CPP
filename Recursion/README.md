@@ -11,6 +11,7 @@ This folder contains recursion-based Data Structures and Algorithms problems sol
 3. Print Subsets
 4. Print Subsets (Power Set)
 5. Permutation
+6. N-Queen Problem
 
 
 🧠 Concepts Used
