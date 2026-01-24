@@ -12,6 +12,7 @@ This folder contains recursion-based Data Structures and Algorithms problems sol
 4. Print Subsets (Power Set)
 5. Permutation
 6. N-Queen Problem
+7. Sudoku Solver
 
 
 🧠 Concepts Used
